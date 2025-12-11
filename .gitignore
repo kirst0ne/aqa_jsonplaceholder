@@ -1,0 +1,34 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# PyCharm
+.idea/
+*.iml
+out/
+*.log
+
+# Test reports
+reports/
+allure-results/
+*.html
+*.xml
+*.json
