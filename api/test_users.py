@@ -1,4 +1,5 @@
 from helpers.api_client import ApiClient
+from helpers.validators import validate_user
 
 client = ApiClient("https://jsonplaceholder.typicode.com")
 
@@ -21,6 +22,7 @@ def test_get_exists_users():
         assert response.status_code == 200
         user = response.json()
         assert user["id"] == user_id
+        validate_user(user)
 
 def test_get_nonexists_user():
     response = client.get_user(11)

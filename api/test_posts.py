@@ -1,4 +1,5 @@
 from helpers.api_client import ApiClient
+from helpers.validators import validate_post
 
 client = ApiClient("https://jsonplaceholder.typicode.com")
 
@@ -21,6 +22,7 @@ def test_get_exists_posts():
         assert response.status_code == 200
         post = response.json()
         assert post["id"] == post_id
+        validate_post(post)
 
 
 def test_get_nonexists_random_post_id():
