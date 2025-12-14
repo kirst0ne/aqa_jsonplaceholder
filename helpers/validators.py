@@ -21,11 +21,34 @@ def validate_user(user_data):
     assert isinstance(user_data["name"], str)
     assert isinstance(user_data["username"], str)
     assert isinstance(user_data["email"], str) and "@" in user_data["email"]
-    assert isinstance(user_data["phone"], str)
-    assert isinstance(user_data["website"], str)
+    if "phone" in user_data:
+        assert isinstance(user_data["phone"], str)
+    if "website" in user_data:
+        assert isinstance(user_data["website"], str)
     if "address" in user_data:
         assert isinstance(user_data["address"], dict)
+
+        required_fields_address = {"street", "suite", "city", "zipcode", "geo"}
+        address_data = user_data["address"]
+
+        missing_address = required_fields_address - set(address_data.keys())
+        assert not missing_address, f"Отсутствуют поля: {missing_address}"
+
+        if "geo" in address_data:
+            assert isinstance(address_data["geo"], dict)
+            required_fields_geo = {"lat", "lng"}
+            geo_data = address_data["geo"]
+
+            missing_geo = required_fields_geo - set(geo_data.keys())
+            assert not missing_geo, f"Отсутствуют поля: {missing_geo}"
+
     if "company" in user_data:
         assert isinstance(user_data["company"], dict)
+
+        required_fields_company = {"name", "catchPhrase", "bs"}
+        company_data = user_data["company"]
+
+        missing_company = required_fields_company - set(company_data.keys())
+        assert not missing_company, f"Отсутствуют поля: {missing_company}"
 
     return True
