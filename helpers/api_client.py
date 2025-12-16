@@ -1,8 +1,10 @@
 import requests
+from helpers.config import Config
 
 class ApiClient:
-    def __init__(self, base_url):
-        self.base_url = base_url
+    def __init__(self):
+        self.base_url = Config.API.base_url
+        self.timeout = Config.API.timeout
         self.session = requests.Session()
 
     def get_posts(self):

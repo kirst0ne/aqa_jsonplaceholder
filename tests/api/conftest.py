@@ -1,9 +1,10 @@
 import pytest
 from helpers.api_client import ApiClient
+from helpers.config import Config
 
 @pytest.fixture()
 def client():
-    return ApiClient("https://jsonplaceholder.typicode.com")
+    return ApiClient()
 
 @pytest.fixture()
 def new_post_data():
