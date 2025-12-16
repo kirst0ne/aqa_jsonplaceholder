@@ -1,5 +1,3 @@
-from http.client import responses
-
 import requests
 from helpers.config import Config
 from helpers.logger import get_logger
