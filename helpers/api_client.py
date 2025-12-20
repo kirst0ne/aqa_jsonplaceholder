@@ -38,3 +38,15 @@ class ApiClient:
 
     def create_user(self, user_data):
         return self._make_request("POST", "users", json=user_data)
+
+    def update_post(self, post_id, update_data):
+        return self._make_request("PUT", f"posts/{post_id}", json=update_data)
+
+    def update_user(self, user_id, update_data):
+        return self._make_request("PUT", f"users/{user_id}", json=update_data)
+
+    def delete_post(self, post_id):
+        return self._make_request("DELETE", f"posts/{post_id}")
+
+    def delete_user(self, user_id):
+        return self._make_request("DELETE", f"users/{user_id}")
