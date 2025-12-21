@@ -71,4 +71,7 @@ allure serve allure-results
 
 - Тестовые данные находятся в папке data/
 - Результаты Allure сохраняются в allure-results/ (не коммитить в git)
-- Для очистки результатов: rm -rf allure-results/
+- Для очистки результатов: 
+```
+rm -rf allure-results/
+```
