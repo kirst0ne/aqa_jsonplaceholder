@@ -3,30 +3,29 @@
 Проект для тестирования REST API (JSONPlaceholder) с использованием Pytest и Allure.
 
 ## Структура проекта
-project/
-├── data/ # JSON-файлы с тестовыми данными
-│ ├── albums.json
-│ ├── comments.json
-│ ├── posts.json
-│ └── users.json
-├── helpers/ # Вспомогательные модули
-│ ├── api_client.py # Клиент для работы с API
-│ ├── config.py # Конфигурация
-│ ├── logger.py # Логирование
-│ ├── utils.py # Утилиты
-│ └── validators.py # Валидаторы ответов
-├── tests/ # Тесты
-│ ├── api/ # API-тесты
-│ │ ├── conftest.py # Фикстуры Pytest
-│ │ ├── test_posts.py # Тесты для /posts
-│ │ └── test_users.py # Тесты для /users
-│ ├── ui/ # UI-тесты (заготовка)
-│ └── unit/ # Unit-тесты (заготовка)
-├── allure-results/ # Результаты Allure (генерируется)
-├── reports/ # Отчёты (заготовка)
-├── requirements.txt # Зависимости Python
-└── README.md # Этот файл
-
+**project/**  
+├── **data/** - JSON-файлы с тестовыми данными  
+│   ├── albums.json  
+│   ├── comments.json  
+│   ├── posts.json  
+│   └── users.json  
+├── **helpers/** - Вспомогательные модули  
+│   ├── api_client.py - Клиент для работы с API  
+│   ├── config.py - Конфигурация  
+│   ├── logger.py - Логирование  
+│   ├── utils.py - Утилиты  
+│   └── validators.py - Валидаторы ответов  
+├── **tests/** - Тесты  
+│   ├── **api/** - API-тесты  
+│   │   ├── conftest.py - Фикстуры Pytest  
+│   │   ├── test_posts.py - Тесты для /posts  
+│   │   └── test_users.py - Тесты для /users  
+│   ├── **ui/** - UI-тесты (заготовка)  
+│   └── **unit/** - Unit-тесты (заготовка)  
+├── **allure-results/** - Результаты Allure (генерируется)  
+├── **reports/** - Отчёты (заготовка)  
+├── **requirements.txt** - Зависимости Python  
+└── **README.md** - Этот файл 
 
 ## Установка
 
