@@ -1,5 +1,3 @@
-from pkg_resources import invalid_marker
-
 from helpers.validators import validate_user
 
 def test_get_users(client):
@@ -34,3 +32,19 @@ def test_create_user(client, new_user_data):
     created_user = response.json()
     assert "id" in created_user
     assert created_user["id"] == 11
+
+def test_update_user(client, random_user_id, update_user_data):
+    response_update_user = client.update_user(random_user_id, update_user_data)
+    assert response_update_user.status_code == 200
+    updated_user = response_update_user.json()
+    assert updated_user["name"] == update_user_data["name"]
+    assert updated_user["email"] == update_user_data["email"]
+
+def test_negative_test_update_user(client, max_user_id, update_user_data):
+    negative_random_user_id = max_user_id + 1
+    response_update_user = client.update_user(negative_random_user_id, update_user_data)
+    assert response_update_user.status_code == 500
+
+def test_delete_user(client, random_user_id):
+    response = client.delete_user(random_user_id)
+    assert response.status_code == 200

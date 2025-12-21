@@ -1,4 +1,6 @@
 from helpers.validators import validate_post
+from tests.api.conftest import client
+
 
 def test_get_all_posts(client):
     response = client.get_posts()
@@ -31,3 +33,21 @@ def test_create_post(client, new_post_data):
     created_post = response.json()
     assert "id" in created_post
     assert created_post["id"] == 101
+
+def test_update_post(client, random_post_id, update_post_data):
+    response_update_post = client.update_post(random_post_id, update_post_data)
+    assert response_update_post.status_code == 200
+    updated_post = response_update_post.json()
+    assert updated_post["title"] == update_post_data["title"]
+    assert updated_post["body"] == update_post_data["body"]
+    assert updated_post["userId"] == update_post_data["userId"]
+    assert updated_post["id"] == random_post_id
+
+def test_negative_test_update_post(client, max_post_id, update_post_data):
+    negative_random_post_id = max_post_id + 1
+    response_update_post = client.update_post(negative_random_post_id, update_post_data)
+    assert response_update_post.status_code == 500
+
+def test_delete_post(client, random_post_id):
+    response = client.delete_post(random_post_id)
+    assert response.status_code == 200
