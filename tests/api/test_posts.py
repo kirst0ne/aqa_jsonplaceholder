@@ -1,6 +1,6 @@
 from helpers.validators import validate_post
 from tests.api.conftest import client
-
+import pytest
 
 def test_get_all_posts(client):
     response = client.get_posts()
@@ -13,17 +13,16 @@ def test_get_all_posts(client):
         assert isinstance(item, dict)
         assert expected_keys.issubset(item.keys())
 
-def test_get_exists_posts(client, posts_data):
-    valid_ids = posts_data.get("valid_ids", [1, 50, 100])
-    for post_id in valid_ids:
-        response = client.get_post(post_id)
-        assert response.status_code == 200
-        post = response.json()
-        assert post["id"] == post_id
-        validate_post(post)
+@pytest.mark.parametrize("post_id", [1, 50, 100])
+def test_get_exists_posts(client, post_id):
+    response = client.get_post(post_id)
+    assert response.status_code == 200
+    post = response.json()
+    assert post["id"] == post_id
+    validate_post(post)
 
-def test_get_nonexists_random_post_id(client, posts_data):
-    invalid_id = posts_data.get("invalid_id", 999)
+@pytest.mark.parametrize("invalid_id", [101, 999])
+def test_get_nonexistent_post_by_id(client, invalid_id):
     response = client.get_post(invalid_id)
     assert response.status_code == 404
 

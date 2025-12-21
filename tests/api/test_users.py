@@ -1,4 +1,5 @@
 from helpers.validators import validate_user
+import pytest
 
 def test_get_users(client):
     response = client.get_users()
@@ -11,18 +12,16 @@ def test_get_users(client):
         assert isinstance(item, dict)
         assert expected_keys.issubset(item.keys())
 
-def test_get_exists_users(client, users_data):
-    valid_ids = users_data.get("valid_ids", [1, 5, 10])
-    for user_id in valid_ids:
-        response = client.get_user(user_id)
-        assert response.status_code == 200
-        user = response.json()
-        assert user["id"] == user_id
-        print(f"response: {user}")
-        validate_user(user)
+@pytest.mark.parametrize("user_id", [1, 5, 10])
+def test_get_exists_users(client, user_id):
+    response = client.get_user(user_id)
+    assert response.status_code == 200
+    user = response.json()
+    assert user["id"] == user_id
+    validate_user(user)
 
-def test_get_nonexists_user(client, users_data):
-    invalid_id = users_data.get("invalid_id", 11)
+@pytest.mark.parametrize("invalid_id", [11, 100])
+def test_get_nonexistent_user_by_id(client, invalid_id):
     response = client.get_user(invalid_id)
     assert response.status_code == 404
 
