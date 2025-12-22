@@ -1,10 +1,9 @@
 from helpers.validators import validate_post
-from tests.api.conftest import client
 import allure
 import pytest
 
 @allure.feature("Posts API")
-@allure.story("GET operations")
+@allure.story("Posts CRUD operations")
 class TestPosts:
     @allure.title("Get all posts")
     def test_get_all_posts(self, client):
@@ -61,7 +60,7 @@ class TestPosts:
 
     @allure.title("Positive - Update post")
     def test_update_post(self, client, random_post_id, update_post_data):
-        with allure.step(f"Send /UPDATE posts/{random_post_id}"):
+        with allure.step(f"Send /PUT posts/{random_post_id}"):
             response_update_post = client.update_post(random_post_id, update_post_data)
 
         with allure.step("Check response status code"):
@@ -78,7 +77,7 @@ class TestPosts:
     def test_negative_test_update_post(self, client, max_post_id, update_post_data):
         negative_random_post_id = max_post_id + 1
 
-        with allure.step(f"Send /UPDATE posts/{negative_random_post_id}"):
+        with allure.step(f"Send /PUT posts/{negative_random_post_id}"):
             response_update_post = client.update_post(negative_random_post_id, update_post_data)
 
         with allure.step("Check response status code"):

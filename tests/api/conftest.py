@@ -54,7 +54,7 @@ def new_user_data(users_data):
 
 @pytest.fixture()
 def update_user_data(users_data):
-    """Данные для создания нового поста"""
+    """Данные для обновления пользователя"""
     return users_data.get("update_user", {})
 
 @pytest.fixture(scope = "session")
@@ -70,3 +70,33 @@ def random_user_id(all_user_ids):
 @pytest.fixture()
 def max_user_id(all_user_ids):
     return max(all_user_ids)
+
+@pytest.fixture()
+def comments_data(test_data):
+    """Данные для тестов комментариев"""
+    return test_data.get("comments", {})
+
+@pytest.fixture()
+def new_comment_data(comments_data):
+    """Данные для создания нового комментария"""
+    return comments_data.get("new_comment", {})
+
+@pytest.fixture()
+def update_comment_data(comments_data):
+    """Данные для обновления комментария"""
+    return comments_data.get("update_comment", {})
+
+@pytest.fixture(scope="session")
+###Хардкодим id - тк получить их из аналогичной фикстуры, используемой для posts - нельзя###
+def safe_comment_ids():
+    return list(range(1, 501))
+
+@pytest.fixture()
+def random_comment_id(safe_comment_ids):
+    comment_id = random.choice(safe_comment_ids)
+    print(f"Random comment_id = {comment_id}")
+    return comment_id
+
+@pytest.fixture()
+def max_comment_id(safe_comment_ids):
+    return max(safe_comment_ids)

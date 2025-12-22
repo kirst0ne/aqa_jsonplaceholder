@@ -52,3 +52,15 @@ def validate_user(user_data):
         assert not missing_company, f"Отсутствуют поля: {missing_company}"
 
     return True
+
+def validate_comment(comment_data):
+    required_fields = {"postId", "name", "email", "body", "id"}
+
+    missing = required_fields - set(comment_data.keys())
+    assert not missing, f"Отсутсвуют поля: {missing}"
+
+    assert isinstance(comment_data["postId"], int)
+    assert isinstance(comment_data["name"], str)
+    assert isinstance(comment_data["email"], str)
+    assert isinstance(comment_data["body"], str)
+    assert isinstance(comment_data["id"], int)

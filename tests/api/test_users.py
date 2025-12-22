@@ -3,7 +3,7 @@ import pytest
 import allure
 
 @allure.feature("Users API")
-@allure.story("GET operations")
+@allure.story("Users CRUD operations")
 class TestUsers:
     @allure.title("Get all users")
     def test_get_users(self, client):
@@ -25,7 +25,7 @@ class TestUsers:
     @allure.title("Positive - Get user by ID: {user_id}")
     @pytest.mark.parametrize("user_id", [1, 5, 10])
     def test_get_exists_users(self, client, user_id):
-        with allure.step(f"Send /GET /users{user_id} request"):
+        with allure.step(f"Send /GET /users/{user_id} request"):
             response = client.get_user(user_id)
 
         with allure.step("Check response status code"):
@@ -39,7 +39,7 @@ class TestUsers:
     @allure.title("Negative - Get user by invalid ID: {invalid_id}")
     @pytest.mark.parametrize("invalid_id", [11, 100])
     def test_get_nonexistent_user_by_id(self, client, invalid_id):
-        with allure.step(f"Send /GET /users{invalid_id} request"):
+        with allure.step(f"Send /GET /users/{invalid_id} request"):
             response = client.get_user(invalid_id)
 
         with allure.step("Check response status code"):
@@ -57,7 +57,7 @@ class TestUsers:
 
     @allure.title("Positive - Update user")
     def test_update_user(self, client, random_user_id, update_user_data):
-        with allure.step(f"Send /UPDATE /users/{random_user_id} request"):
+        with allure.step(f"Send /PUT /users/{random_user_id} request"):
             response_update_user = client.update_user(random_user_id, update_user_data)
 
         with allure.step("Check response status code"):
@@ -71,7 +71,7 @@ class TestUsers:
     @allure.title("Negative - Update user")
     def test_negative_test_update_user(self, client, max_user_id, update_user_data):
         negative_random_user_id = max_user_id + 1
-        with allure.step(f"Send /UPDATE /users/{negative_random_user_id}"):
+        with allure.step(f"Send /PUT /users/{negative_random_user_id}"):
             response_update_user = client.update_user(negative_random_user_id, update_user_data)
 
         with allure.step("Check response status code"):
