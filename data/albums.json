@@ -1,0 +1,50 @@
+{
+  "description": "Тестовые данные для альбомов",
+  "valid_ids": [1, 50, 100],
+  "invalid_id": [101, 999],
+  "user_albums": [
+    {
+      "userId": 1,
+      "expected_count": 10,
+      "sample_titles": ["quidem molestiae enim", "sunt qui excepturi placeat culpa"]
+    },
+    {
+      "userId": 2,
+      "expected_count": 10,
+      "sample_titles": ["omnis laborum odio"]
+    }
+  ],
+  "new_album": {
+    "userId": 1,
+    "title": "Мой тестовый альбом"
+  },
+  "update_album": {
+    "title": "Обновленное название альбома"
+  },
+  "edge_cases": {
+    "first_album": 1,
+    "last_album": 100,
+    "empty_title": "",
+    "long_title": "Очень длинное название альбома, которое проверяет обработку длинных строк и граничные случаи валидации данных при создании или обновлении ресурсов через API"
+  },
+  "test_scenarios": {
+    "album_with_special_chars": {
+      "title": "Альбом с спец.символами: !@#$%^&*()",
+      "description": "Проверка обработки специальных символов"
+    },
+    "album_with_unicode": {
+      "title": "Альбом с эмодзи 😀 и кириллицей привет",
+      "description": "Проверка Unicode и эмодзи"
+    },
+    "album_with_html": {
+      "title": "Альбом <script>alert('xss')</script>",
+      "description": "Проверка безопасности (XSS)"
+    }
+  },
+  "validation_rules": {
+    "title_min_length": 1,
+    "title_max_length": 255,
+    "required_fields": ["userId", "title"],
+    "userId_type": "integer"
+  }
+}

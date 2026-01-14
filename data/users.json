@@ -1,0 +1,53 @@
+{
+  "description": "Тестовые данные для пользователей",
+  "valid_ids": [1, 5, 9, 10],
+  "invalid_id": 999,
+  "edge_cases": {
+    "first_user": 1,
+    "last_user": 10,
+    "non_existent": 999
+  },
+  "new_user": {
+    "name": "Иван Тестов",
+    "username": "ivan_test",
+    "email": "ivan.test@example.com",
+    "address": {
+      "street": "Тестовая улица",
+      "suite": "Корпус 1",
+      "city": "Москва",
+      "zipcode": "123456",
+      "geo": {
+        "lat": "55.7558",
+        "lng": "37.6173"
+      }
+    },
+    "phone": "+7-999-123-45-67",
+    "website": "https://ivan-test.example.com",
+    "company": {
+      "name": "Тестовая компания",
+      "catchPhrase": "Тестируем будущее",
+      "bs": "тестирование API"
+    }
+  },
+  "update_user": {
+    "name": "Иван Обновленный",
+    "email": "ivan.updated@example.com"
+  },
+  "partial_user": {
+    "name": "Минимальный пользователь",
+    "username": "min_user",
+    "email": "min@example.com"
+  },
+  "invalid_users": [
+    {
+      "name": "",
+      "email": "invalid-email",
+      "description": "Пустое имя и невалидный email"
+    },
+    {
+      "name": "Test",
+      "email": "test@",
+      "description": "Неполный email"
+    }
+  ]
+}

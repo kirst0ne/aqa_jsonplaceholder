@@ -1,0 +1,14 @@
+{
+  "valid_ids": [1, 50, 100],
+  "invalid_id": 999,
+  "new_post": {
+    "title": "Test Post Title",
+    "body": "Test post body content",
+    "userId": 6
+  },
+  "update_post": {
+    "title": "Updated Title",
+    "body": "Updated body",
+    "userId": 1
+  }
+}

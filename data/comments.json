@@ -1,0 +1,31 @@
+{
+  "description": "Тестовые данные для комментариев",
+  "valid_ids": [1, 100, 500],
+  "invalid_id": [501, 999],
+  "new_comment": {
+    "postId": 1,
+    "name": "Тестовый комментатор",
+    "email": "tester@example.com",
+    "body": "Это тестовый комментарий для проверки API"
+  },
+  "update_comment": {
+    "name": "Обновлено содержание заголовка",
+    "email": "Обновлен email",
+    "body": "Обновленное содержание комментария"
+  },
+  "invalid_comments": [
+    {
+      "postId": 999,
+      "name": "Test",
+      "email": "test@example.com",
+      "body": "Несуществующий postId"
+    },
+    {
+      "postId": 1,
+      "name": "",
+      "email": "invalid",
+      "body": "",
+      "description": "Все поля невалидны"
+    }
+  ]
+}
