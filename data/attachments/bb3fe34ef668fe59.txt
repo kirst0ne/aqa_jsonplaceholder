@@ -1,0 +1,2 @@
+INFO - GET https://jsonplaceholder.typicode.com/comments/500
+INFO - Response: 200

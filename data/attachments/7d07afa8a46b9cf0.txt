@@ -1,0 +1,2 @@
+INFO - GET https://jsonplaceholder.typicode.com/posts/101
+INFO - Response: 404

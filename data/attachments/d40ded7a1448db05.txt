@@ -1,0 +1,2 @@
+INFO - POST https://jsonplaceholder.typicode.com/posts
+INFO - Response: 201
