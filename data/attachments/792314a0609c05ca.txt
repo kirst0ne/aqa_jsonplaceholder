@@ -1,2 +1,0 @@
-INFO - DELETE https://jsonplaceholder.typicode.com/posts/20
-INFO - Response: 200
