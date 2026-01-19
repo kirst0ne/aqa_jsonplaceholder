@@ -1,0 +1,2 @@
+INFO     helpers.api_client:api_client.py:15 PUT https://jsonplaceholder.typicode.com/posts/94
+INFO     helpers.api_client:api_client.py:22 Response: 200
