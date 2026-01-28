@@ -1,0 +1,2 @@
+INFO     helpers.api_client:api_client.py:15 DELETE https://jsonplaceholder.typicode.com/comments/291
+INFO     helpers.api_client:api_client.py:22 Response: 200
