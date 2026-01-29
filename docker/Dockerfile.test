@@ -1,0 +1,12 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# 1. Копируем ТОЛЬКО зависимости
+COPY requirements.txt .
+
+# 2. Устанавливаем зависимости
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 3. Копируем код
+COPY . .
