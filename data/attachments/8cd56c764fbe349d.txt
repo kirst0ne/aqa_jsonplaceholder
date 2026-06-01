@@ -1,0 +1,1 @@
+INFO     helpers.api_client:api_client.py:15 GET https://jsonplaceholder.typicode.com/users/100
