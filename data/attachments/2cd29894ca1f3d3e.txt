@@ -1,2 +1,0 @@
-INFO - GET https://jsonplaceholder.typicode.com/comments/999
-INFO - Response: 404
