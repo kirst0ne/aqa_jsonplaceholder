@@ -1,1 +1,0 @@
-INFO - GET https://jsonplaceholder.typicode.com/users/100
