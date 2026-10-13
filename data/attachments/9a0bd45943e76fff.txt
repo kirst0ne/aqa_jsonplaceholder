@@ -1,2 +1,0 @@
-INFO - PUT https://jsonplaceholder.typicode.com/comments/372
-INFO - Response: 200
